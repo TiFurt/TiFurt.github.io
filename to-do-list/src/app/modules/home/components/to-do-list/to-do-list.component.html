@@ -1,0 +1,19 @@
+<section>
+  <ng-container *ngIf="toDoList.length;then listBlock; else imgBlock"></ng-container>
+  <ng-template #listBlock>
+    <ul>
+      <li *ngFor="let item of toDoList; let i = index">
+        <input type="checkbox" [(ngModel)]="item.done"/>
+        <input type="text" (keyup)="deleteEmptyField(item.task, i)"  [(ngModel)]="item.task" [ngClass]="{checked:item.done}"/>
+        <button (click)="deleteToDoItem(i)">
+          <img src="assets/icon/icon-trash.svg" alt="icon trash">
+        </button>
+      </li>
+    </ul>
+  </ng-template>
+  <ng-template #imgBlock>
+    <img src="assets/img/bg-task.png" alt="Task Image">
+  </ng-template>
+</section>
+<app-to-do-add-itens (enviarToDoItem)="toDoList.push($event)"></app-to-do-add-itens>
+<app-to-do-button-delete-all *ngIf="toDoList.length" (click)="deleteAllList()"></app-to-do-button-delete-all>
