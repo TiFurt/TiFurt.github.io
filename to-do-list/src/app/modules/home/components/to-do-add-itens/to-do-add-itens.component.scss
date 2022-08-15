@@ -1,0 +1,32 @@
+@import "/src/dist/scss/variable";
+
+
+:host {
+  display: flex;
+  justify-content: center;
+
+
+  margin-top: -20px;
+
+
+  input {
+    width: 80%;
+    text-align: center;
+
+
+    border: none;
+    background: $tertiary-background-color;
+
+    font-size: 16px;
+    color: $secondary-text-color;
+
+
+    padding: 10px;
+    box-sizing: border-box;
+
+    &::placeholder {
+      color: $secondary-text-color;
+    }
+  }
+
+}
